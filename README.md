@@ -1,0 +1,2 @@
+# SZOLGALTATASELLENORZESE_DQUR6F_ARMAI
+Szolgáltatás ellenőrzés pingeléssel
