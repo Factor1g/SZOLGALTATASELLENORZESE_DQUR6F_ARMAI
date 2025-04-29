@@ -1,0 +1,6 @@
+@Szolgaltatas_ellenorzese_HostAddress = http://localhost:5176
+
+GET {{Szolgaltatas_ellenorzese_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
