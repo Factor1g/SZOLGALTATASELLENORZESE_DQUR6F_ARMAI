@@ -16,12 +16,19 @@ namespace Szolgaltatas_ellenorzese.Controllers
             var pingSender = new Ping();
             foreach (var url in urls)
             {
-                var reply = await pingSender.SendPingAsync(url);
-
+                var rawUrl = url.Replace("https://", "").Replace("http://", "");
+                var buffer = new byte[32];
+                var options = new PingOptions(128,true);
+                var reply = await pingSender.SendPingAsync(rawUrl,1000,buffer,options);
+                
                 results.Add(new PingResult
                 {
                     Url = url,
                     IsLive = reply.Status == IPStatus.Success,
+                    Address = reply.Address.ToString(),
+                    RoundtripTime = reply.RoundtripTime,
+                    Ttl = reply.Options?.Ttl ?? 0,
+                    BufferSize = reply.Buffer.Length,
                 });
             }           
 
