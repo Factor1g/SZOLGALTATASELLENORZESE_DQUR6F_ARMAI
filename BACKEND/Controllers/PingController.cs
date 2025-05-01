@@ -32,7 +32,7 @@ namespace Szolgaltatas_ellenorzese.Controllers
                 });
             }           
 
-            return results;
+            return Ok(results);
         }
     }
 }

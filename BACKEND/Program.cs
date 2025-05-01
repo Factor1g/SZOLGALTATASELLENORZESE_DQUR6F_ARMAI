@@ -1,4 +1,6 @@
 
+using Microsoft.AspNetCore.Builder;
+
 namespace Szolgaltatas_ellenorzese
 {
     public class Program
@@ -13,6 +15,7 @@ namespace Szolgaltatas_ellenorzese
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddCors();
 
             var app = builder.Build();
 
@@ -27,6 +30,12 @@ namespace Szolgaltatas_ellenorzese
 
             app.UseAuthorization();
 
+            app.UseRouting();
+
+            app.UseCors(policy => policy.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
 
             app.MapControllers();
 
