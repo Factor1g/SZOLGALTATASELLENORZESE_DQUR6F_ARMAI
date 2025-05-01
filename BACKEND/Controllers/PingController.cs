@@ -10,17 +10,22 @@ namespace Szolgaltatas_ellenorzese.Controllers
     public class PingController : ControllerBase
     {
         [HttpPost]
-        public async Task<ActionResult<PingResult>> Post(string url) 
+        public async Task<ActionResult<List<PingResult>>> Post(List<string> urls) 
         { 
-            var result = new PingResult();
+            var results = new List<PingResult>();
             var pingSender = new Ping();
+            foreach (var url in urls)
+            {
+                var reply = await pingSender.SendPingAsync(url);
 
-            var reply = await pingSender.SendPingAsync(url);
+                results.Add(new PingResult
+                {
+                    Url = url,
+                    IsLive = reply.Status == IPStatus.Success,
+                });
+            }           
 
-            result.Url = url;
-            result.IsLive = reply.Status == IPStatus.Success;
-
-            return result;
+            return results;
         }
     }
 }
