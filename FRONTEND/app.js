@@ -14,6 +14,8 @@ document.getElementById('urlForm').addEventListener('submit', async function(e) 
 
 	const tbody = document.querySelector('#resultTable tbody');	
 
+	tbody.innerHTML = '';
+
 	data.forEach(item => {
 		const row = document.createElement('tr');
 
