@@ -8,24 +8,26 @@
     <title>Szolgáltatás ellenőrző</title>
 </head>
 <body>
-    <form id="urlForm">
-        <textarea id="urls" rows="5" placeholder="Írja be az url címeket soronként..."></textarea>
-        <button type="submit">Ellenőrzés</button>
-    </form>
-    <table id="resultTable">
-        <thead>
-            <tr>
-                <th>URL</th>
-                <th>Elérhető</th>
-                <th>Cím</th>
-                <th>Válaszidő [ms]</th>
-                <th>Time to Live</th>
-                <th>Adatméret [byte]</th>
-            </tr>
-        </thead>
-        <tbody>           
-        </tbody>
-    </table>
+    <div class="container py-5">
+        <form id="urlForm" class="mb-4">
+            <textarea id="urls" class="form-control mb-4" rows="5" placeholder="Írja be az url címeket soronként..."></textarea>
+            <button type="submit" class="btn btn-primary">Ellenőrzés</button>
+        </form>
+        <table id="resultTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>URL</th>
+                    <th>Elérhető</th>
+                    <th>Cím</th>
+                    <th>Válaszidő [ms]</th>
+                    <th>Time to Live</th>
+                    <th>Adatméret [byte]</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
