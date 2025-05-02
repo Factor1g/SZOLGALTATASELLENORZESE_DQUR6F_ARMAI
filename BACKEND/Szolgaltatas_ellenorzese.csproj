@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+	<Content Include="..\FRONTEND\index.html" />
+	<Content Include="..\FRONTEND\app.js" />
   </ItemGroup>
 
 </Project>
