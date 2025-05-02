@@ -12,15 +12,23 @@ document.getElementById('urlForm').addEventListener('submit', async function(e) 
 
 	console.log("Backend válasz:", data);
 
-	const row = document.getElementById('row-1');
-	const item = data[0];
-	row.innerHTML = `
-	<td>${item.url}</td>
+	const tbody = document.querySelector('#resultTable tbody');	
+
+	data.forEach(item => {
+		const row = document.createElement('tr');
+
+		row.innerHTML = `<td>${item.url}</td>
             <td>${item.isLive ? 'Elérhetõ' : 'Nem elérhetõ'}</td>
             <td>${item.address}</td>
             <td>${item.roundtripTime}</td>
             <td>${item.ttl}</td>
-            <td>${item.bufferSize}</td>`
+            <td>${item.bufferSize}</td>`;
+
+		tbody.appendChild(row);
+
+	});
+
+	
 });
 
 
