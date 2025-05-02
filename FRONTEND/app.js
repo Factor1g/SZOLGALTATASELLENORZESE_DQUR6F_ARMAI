@@ -10,7 +10,7 @@ document.getElementById('urlForm').addEventListener('submit', async function(e) 
 
 	const data = await response.json();
 
-	console.log("Backend v·lasz:", data);
+	console.log("Backend v√°lasz:", data);
 
 	const tbody = document.querySelector('#resultTable tbody');	
 
@@ -18,12 +18,12 @@ document.getElementById('urlForm').addEventListener('submit', async function(e) 
 		const row = document.createElement('tr');
 
 		row.innerHTML = `<td>${item.url}</td>
-            <td>${item.isLive ? 'ElÈrhetı' : 'Nem elÈrhetı'}</td>
+            <td>${item.isLive ? 'El√©rhet≈ë' : 'Nem el√©rhet≈ë'}</td>
             <td>${item.address}</td>
             <td>${item.roundtripTime}</td>
             <td>${item.ttl}</td>
             <td>${item.bufferSize}</td>`;
-
+		
 		tbody.appendChild(row);
 
 	});
