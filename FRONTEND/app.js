@@ -20,14 +20,13 @@ document.getElementById('urlForm').addEventListener('submit', async function(e) 
 		const row = document.createElement('tr');
 
 		row.innerHTML = `<td>${item.url}</td>
-            <td>${item.isLive ? 'Elérhető' : 'Nem elérhető'}</td>
+            <td><span class="badge bg-${item.isLive ? 'success' : 'danger'}">${item.isLive ? 'Elérhető' : 'Nem elérhető'}</span></td>
             <td>${item.address}</td>
             <td>${item.roundtripTime}</td>
             <td>${item.ttl}</td>
             <td>${item.bufferSize}</td>`;
 		
 		tbody.appendChild(row);
-
 	});
 
 	
