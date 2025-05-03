@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
+using System.Net;
 using System.Net.NetworkInformation;
 using Szolgaltatas_ellenorzese.Models;
 
@@ -16,20 +18,36 @@ namespace Szolgaltatas_ellenorzese.Controllers
             var pingSender = new Ping();
             foreach (var url in urls)
             {
-                var rawUrl = url.Replace("https://", "").Replace("http://", "");
-                var buffer = new byte[32];
-                var options = new PingOptions(128,true);
-                var reply = await pingSender.SendPingAsync(rawUrl,1000,buffer,options);
-                
-                results.Add(new PingResult
+                try
                 {
-                    Url = url,
-                    IsLive = reply.Status == IPStatus.Success,
-                    Address = reply.Address.ToString(),
-                    RoundtripTime = reply.RoundtripTime,
-                    Ttl = reply.Options?.Ttl ?? 0,
-                    BufferSize = reply.Buffer.Length,
-                });
+                    var rawUrl = url.Replace("https://", "").Replace("http://", "");
+                    var buffer = new byte[32];
+                    var options = new PingOptions(128, true);
+                    var reply = await pingSender.SendPingAsync(rawUrl, 1000, buffer, options);
+
+                    results.Add(new PingResult
+                    {
+                        Url = url,
+                        IsLive = reply.Status == IPStatus.Success,
+                        Address = reply.Address.ToString(),
+                        RoundtripTime = reply.RoundtripTime,
+                        Ttl = reply.Options?.Ttl ?? 0,
+                        BufferSize = reply.Buffer.Length,
+                    });
+                }
+                catch
+                {
+                    results.Add(new PingResult
+                    {
+                        Url = url,
+                        IsLive = false,
+                        Address = "Unreachable",
+                        RoundtripTime = 0,
+                        Ttl = 0,
+                        BufferSize = 0
+                    });
+                }
+                
             }           
 
             return Ok(results);
