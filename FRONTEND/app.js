@@ -16,6 +16,8 @@ document.getElementById('urlForm').addEventListener('submit', async function(e) 
 
 	tbody.innerHTML = '';
 
+	var allLive = true;
+
 	data.forEach(item => {
 		const row = document.createElement('tr');
 
@@ -27,8 +29,15 @@ document.getElementById('urlForm').addEventListener('submit', async function(e) 
             <td>${item.bufferSize}</td>`;
 		
 		tbody.appendChild(row);
+
+        if (!item.isLive) {
+			allLive = false;
+        }
 	});
 
+	const status = document.querySelector('#status span');
+	status.className = allLive ? 'badge bg-success' : 'badge bg-danger';
+	status.textContent = allLive ? 'Minden domain elérhető' : 'Nem minden domain elérhető';
 	
 });
 
