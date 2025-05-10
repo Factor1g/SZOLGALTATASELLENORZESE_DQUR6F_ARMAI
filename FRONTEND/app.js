@@ -1,4 +1,8 @@
-document.getElementById('urlForm').addEventListener('submit', async function(e) {
+
+const status = document.querySelector('#status span');
+const tbody = document.querySelector('#resultTable tbody');
+
+document.getElementById('urlForm').addEventListener('submit', async function (e) {
 	e.preventDefault();
 
 	const urls = document.getElementById('urls').value.trim().split('\n').filter(Boolean)
@@ -12,11 +16,7 @@ document.getElementById('urlForm').addEventListener('submit', async function(e) 
 
 	console.log("Backend válasz:", data);
 
-	const tbody = document.querySelector('#resultTable tbody');	
-
-	tbody.innerHTML = '';
-
-	
+	tbody.innerHTML = '';	
 
 	var allLive = true;
 
@@ -41,10 +41,16 @@ document.getElementById('urlForm').addEventListener('submit', async function(e) 
         }
 	});
 
-	const status = document.querySelector('#status span');
-	status.className = allLive ? 'badge bg-success' : 'badge bg-danger';
-	status.textContent = allLive ? 'Minden domain elérhető' : 'Nem minden domain elérhető';
 	
+	status.className = allLive ? 'badge bg-success' : 'badge bg-danger';
+	status.textContent = allLive ? 'Minden domain elérhető' : 'Nem minden domain elérhető';	
 });
+
+document.getElementById('clearButton').addEventListener('click', () => {
+	document.getElementById('urls').value = '';
+	status.textContent = '';
+	tbody.innerHTML = '';
+
+})
 
 
