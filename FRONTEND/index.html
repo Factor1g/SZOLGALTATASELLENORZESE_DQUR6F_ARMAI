@@ -10,14 +10,14 @@
 <body class="bg-light d-flex flex-column min-vh-100">
     <main class="felx-grow-1">
         <div class="container py-5">
-            <div class="card shadow rounded-4 p-4 w-85 mx-auto bg-white">
+            <div class="card shadow rounded-4 p-4 w-80 mx-auto bg-white">
                 <h1 class="mb-5">Szolgáltatás ellenörző</h1>
                 <form id="urlForm" class="mb-4">
                     <textarea id="urls" class="form-control mb-4" rows="5" placeholder="Írja be az url címeket soronként..."></textarea>
                     <button type="submit" class="btn btn-primary">Ellenőrzés</button>
                 </form>
                 <div id="status" class="text-center fs-1 mb-4"><span></span></div>
-                <table id="resultTable" class="table table-bordered">
+                <table id="resultTable" class="table table-bordered table-responsive table-striped table-hover align-middle shadow-sm mt-4">
                     <thead>
                         <tr>
                             <th>URL</th>
