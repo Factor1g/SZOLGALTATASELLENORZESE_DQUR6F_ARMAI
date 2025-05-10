@@ -16,12 +16,18 @@ document.getElementById('urlForm').addEventListener('submit', async function(e) 
 
 	tbody.innerHTML = '';
 
+	
+
 	var allLive = true;
 
 	data.forEach(item => {
 		const row = document.createElement('tr');
 
-		row.innerHTML = `<td>${item.url}</td>
+		const completeUrl = item.url.startsWith('http://') || item.url.startsWith('https://')
+			? item.url
+			: 'http://' + item.url;
+
+		row.innerHTML = `<td><a href="${completeUrl}" target="_blank" class="link-primary fw-semibold text-decoration-none">${item.url} ↗</a></td>
             <td><span class="badge bg-${item.isLive ? 'success' : 'danger'}">${item.isLive ? 'Elérhető' : 'Nem elérhető'}</span></td>
             <td>${item.address}</td>
             <td>${item.roundtripTime}</td>
