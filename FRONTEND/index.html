@@ -9,26 +9,28 @@
 </head>
 <body class="bg-light d-flex flex-column min-vh-100">
     <main class="felx-grow-1">
-        <div class="container py-5">
-            <form id="urlForm" class="mb-4">
-                <textarea id="urls" class="form-control mb-4" rows="5" placeholder="Írja be az url címeket soronként..."></textarea>
-                <button type="submit" class="btn btn-primary">Ellenőrzés</button>
-            </form>
-            <div id="status" class="text-center fs-1 mb-4"><span></span></div>
-            <table id="resultTable" class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>URL</th>
-                        <th>Elérhető</th>
-                        <th>Cím</th>
-                        <th>Válaszidő [ms]</th>
-                        <th>Time to Live</th>
-                        <th>Adatméret [byte]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+        <div class="container py-5">            
+            <div class="card shadow rounded-4 p-4 w-75 mx-auto bg-white">
+                <form id="urlForm" class="mb-4">
+                    <textarea id="urls" class="form-control mb-4" rows="5" placeholder="Írja be az url címeket soronként..."></textarea>
+                    <button type="submit" class="btn btn-primary">Ellenőrzés</button>
+                </form>
+                <div id="status" class="text-center fs-1 mb-4"><span></span></div>
+                <table id="resultTable" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>URL</th>
+                            <th>Elérhető</th>
+                            <th>Cím</th>
+                            <th>Válaszidő [ms]</th>
+                            <th>Time to Live</th>
+                            <th>Adatméret [byte]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
     <footer class="bg-dark text-white text-center py-3 mt-auto">
