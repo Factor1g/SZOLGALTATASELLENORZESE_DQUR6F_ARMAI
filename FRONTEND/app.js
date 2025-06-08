@@ -24,10 +24,9 @@ document.getElementById('urlForm').addEventListener('submit', async function (e)
 		const row = document.createElement('tr');
 
 		const completeUrl = item.url.startsWith('http://') || item.url.startsWith('https://')
-			? item.url
-			: 'http://' + item.url;
+			? item.url : 'http://' + item.url;
 
-		row.innerHTML = `<td><a href="${completeUrl}" target="_blank" class="link-primary fw-semibold text-decoration-none">${item.url} ↗</a></td>
+		row.innerHTML = `<td><a href="${completeUrl}" target="_blank" class="link-primary fw-semibold text-decoration-none">${item.url}</a></td>
             <td><span class="badge bg-${item.isLive ? 'success' : 'danger'}">${item.isLive ? 'Elérhető' : 'Nem elérhető'}</span></td>
             <td>${item.address}</td>
             <td>${item.roundtripTime}</td>
